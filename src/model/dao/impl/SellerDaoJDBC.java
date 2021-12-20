@@ -30,7 +30,7 @@ public class SellerDaoJDBC implements SellerDao{
 	public void insert(Seller obj) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(
+			st = conn.prepareStatement (
 					"INSERT INTO seller "
 					+ "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
 					+ "VALUES "
@@ -43,9 +43,11 @@ public class SellerDaoJDBC implements SellerDao{
 			st.setDouble(4, obj.getBaseSalary());
 			st.setInt(5, obj.getDepartment().getId());
 			
+			//executeUpdate serve para execultar o comando (o resultado sendo um inteiro), e nos mostra quantas linhas foram alteradas
 			int rowsAffected = st.executeUpdate();
 			
 			if (rowsAffected > 0) {
+				//codigo do novo registro, que retorna um objeto do tipo ResultSet
 				ResultSet rs = st.getGeneratedKeys();
 				if (rs.next()) {
 					int id = rs.getInt(1);

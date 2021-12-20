@@ -23,10 +23,12 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 	}
 
 
-	@Override
+	@Override //Statement - montar comando sql a ser execultado, e ResultSet representa o objeto contendo o resultado da consulta em forma de tabela
+	//PreparedStatement - 
 	public void insert(Department obj) {
 		PreparedStatement st = null;
 		try {
+			//comando sql
 			st = conn.prepareStatement(
 					"INSERT INTO department "
 					+ "(Name) "
